@@ -1,0 +1,123 @@
+
+
+<form [formGroup]="propertyForm" (ngSubmit)="onEditSubmit()">
+
+  <div formGroupName="propertyImage">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <img *ngIf="previewImageUrl" [src]="previewImageUrl" alt="Preview Image"
+                alt="avatarProperty" id="imgProperty" class="imgProperty" />
+            <input type="file" name="files" id="files" accept="image/*"
+                (change)="onFileSelected($event)" style="display: none" />
+            <label class="buttonFile" for="files">Select photo</label>
+        </div>
+    </div>
+</div>
+
+  <div class="form-row">
+
+      <div class="col-sm-3">
+          <div class="form-group">
+              <label>Property Owner</label>
+              <input type="text" class="form-control" [placeholder]="loggedUser.name" disabled />
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="form-group">
+              <label for="name">Property Name</label>
+              <input type="text" id="name" name="name" class="form-control inputsForm"
+                  placeholder="Property Name" formControlName="name" (focusout)="showValidation($event)" />
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" class="form-control inputsForm"
+                  placeholder="Address" formControlName="address" (focusout)="showValidation($event)" />
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" customInput id="price" name="price" class="form-control inputsForm"
+                formControlName="price" (change)="convertToNumber($event)" (focusout)="showValidation($event)" />
+        </div>
+    </div>
+      
+  </div>
+
+  <div class="form-row">    
+
+    <div class="col-sm-3">
+      <div class="form-group">
+          <label for="codeInternal">Code Internal</label>
+          <input type="text" id="codeInternal" name="codeInternal" class="form-control inputsForm"
+              placeholder="Code Internal" formControlName="codeInternal"
+              (focusout)="showValidation($event)" />
+      </div>
+  </div>
+
+      <div class="col-sm-3">
+          <div class="form-group">
+              <label for="year">Year</label>
+              <input type="text" customInput maxlength="4" id="year" name="year" class="form-control inputsForm"
+                  placeholder="yyyy" formControlName="year" (change)="convertToNumber($event)" 
+                  (focusout)="showValidation($event)" />
+          </div>
+      </div>
+      <div formGroupName="propertyImage">
+          <div class="col-sm-3">
+              <div class="form-group">
+                  <label for="enabled">Enabled</label>
+                  <select id="enabled" name="enabled" class="form-control inputsForm"
+                      (change)="onSelectedChange($event)" formControlName="enabled" (focusout)="showValidation($event)" >
+                      <option [ngValue]="undefined" [disabled]="true" selected hidden>Select an option
+                      </option>
+                      <option *ngFor="let type of options" [value]="type.value">{{type.label}}
+                      </option>
+                  </select>
+              </div>
+          </div>          
+      </div>
+  </div>
+ 
+  <div formGroupName="propertyTrace">
+      <div class="form-row">
+          <div class="col-sm-3">
+              <div class="form-group">
+                  <label for="tax">Tax</label>
+                  <input type="text" customInput id="tax" name="tax" class="form-control inputsForm"
+                      formControlName="tax" (change)="convertToNumber($event)" (focusout)="showValidation($event)" />
+              </div>
+          </div>
+          <div class="col-sm-3">
+              <div class="form-group">
+                  <label for="value">Value</label>
+                  <input id="value" type="text" customInput name="value" class="form-control inputsForm"
+                      formControlName="value" (change)="convertToNumber($event)" (focusout)="showValidation($event)" />
+              </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group">
+                <label for="dateSale">Date Sale</label>
+                <input type="date" id="dateSale" name="dateSale" class="form-control inputsForm"
+                    (change)="onDateChange($event)" formControlName="dateSale"
+                    (focusout)="showValidation($event)" />
+            </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="col-sm-21" style="text-align-last: end;">
+    <button type="button" class="btn btn-danger" (click)="onBack()">Back</button>
+    <button type="submit" class="btn btn-primary" (click)="onEditSubmit()"
+    [disabled]="propertyForm.invalid" style="margin-left: 5%;">Save</button></div>
+  
+  
+</form>
+
+

@@ -1,0 +1,20 @@
+<div *ngFor="let property of propertyData">
+<div class="col-md-6 col-lg-4">
+    <div class="card-box">
+        <div class="card-thumbnail">            
+            <img style="width: 100%;height: 200px " *ngIf="'data:image/png;base64,' + property?.files" [src]="'data:image/png;base64,' + property?.files" alt="Preview Image"
+                alt="ImageProperty" id="imgProperty" class="imgProperty" />
+        </div>
+        <h3><a  class="mt-2 text-danger">{{property.name}}</a></h3>
+        <p class="text-secondary">
+            Year: {{property.year}}<b style="margin-left: 20px;"> Cod: {{property.codeInternal}}</b>            
+        </p>
+        <h5>
+            <a  class="mt-2 text-danger">Tax: ${{property.tax}}</a>
+            <b style="margin-left: 20px;"> Value: ${{property.value}}</b>             
+        </h5>
+        <b> Date Sale: {{property.dateSale | date: 'dd-MM-yyyy'}}</b>
+        <h4><a  class="mt-2 text-danger">$ {{property.price}}</a></h4>       
+    </div>
+</div> 
+</div>

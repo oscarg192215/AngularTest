@@ -1,0 +1,20 @@
+form img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 6px solid #AAA;
+    margin-left: 25%
+  }
+
+  .custom-toast .ui-toast {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
+  
+  .custom-toast .ui-toast-message-content {
+    font-family: 'Courier New', Courier, monospace;
+    background: #FFD07B;
+  }
